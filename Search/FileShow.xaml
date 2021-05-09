@@ -1,0 +1,27 @@
+﻿<Window x:Class="Search.FileShow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Search"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+        Title="FileShow" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="1"   Name="Scroll1" ScrollChanged="Scroll1_ScrollChanged">
+                <StackPanel Name="ListPanel"></StackPanel>
+            </ScrollViewer>
+        <Border CornerRadius="10" Grid.Row="2" Background="White" Height="0" Width="0" Name="Border1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.5" BlurRadius="25" Direction="0" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+            <TextBlock  Margin="10" Name="TT1"     FontSize="20" FontFamily="微软雅黑"></TextBlock>
+        </Border>
+        
+    </Grid>
+</Window>
