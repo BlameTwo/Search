@@ -6,26 +6,70 @@
              xmlns:local="clr-namespace:Search.Xaml"
              mc:Ignorable="d" 
               Loaded="UserControl_Loaded"
-             Background="Gray" Opacity="0.5"
-             MouseMove="UserControl_MouseMove"          MouseLeave="UserControl_MouseLeave"
+             MaxHeight="150" MaxWidth="1000"
              MouseDoubleClick="UserControl_MouseDoubleClick"
              Margin="0 10"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
              >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="9*"/>
-        </Grid.ColumnDefinitions>
-        <svgc:SvgViewbox Name="FileImage" Grid.RowSpan="3" Margin="20"></svgc:SvgViewbox>
-        <TextBlock Text="文件名" Grid.Row="0" Grid.Column="1" Name="FileName" FontSize="30"></TextBlock>
-        <TextBlock Text="路径" Grid.Row="1" Grid.Column="1" FontSize="20" Name="FilePath"></TextBlock>
-        <TextBlock Text="修改时间" Grid.Row="2" Grid.Column="1" FontSize="20" Name="FileTime" HorizontalAlignment="Right" Margin="0 0 5 0"></TextBlock>
-        
+    <UserControl.Resources>
+        <ContextMenu x:Key="ContextMenu1" Style="{DynamicResource ContextMenuStyle}">
+            <MenuItem Name="MiFullScreen" Header="打开文件"  VerticalAlignment="Center" Click="MiFullScreen_Click" />
+            <Separator></Separator>
+            <MenuItem Name="MyOpen" Header="打开方式" VerticalAlignment="Center" Click="MyOpen_Click"/>
+            <Separator></Separator>
+            <MenuItem Name="MiPlay" Header="打开文件所在的文件夹"  VerticalAlignment="Center" Click="MiPlay_Click"/>
+            <Separator></Separator>
+            <MenuItem Name="MyCopyFile" Header="复制路径" VerticalAlignment="Center" Click="MyCopyFile_Click" />
+        </ContextMenu>
+        <Storyboard x:Key="OnLoaded1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Border1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.778"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Border1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-2.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Border1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.848"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Border1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <FontFamily x:Key="One">/Font/Font.TTF#字体圈欣意吉祥宋</FontFamily>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+    </UserControl.Triggers>
+    <Grid ContextMenu="{StaticResource ContextMenu1}">
+        <Border Background="Gray" Opacity="0.5" Margin="10" CornerRadius="10" Name="Border1" MouseEnter="UserControl_MouseMove"   MouseLeave="UserControl_MouseLeave"  RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <svgc:SvgViewbox Name="FileImage" Grid.RowSpan="3" Margin="20"></svgc:SvgViewbox>
+                <TextBlock FontFamily="{StaticResource One}" Text="文件名" Grid.Row="0" Grid.Column="1" Name="FileName" FontSize="30" Margin="0 0 30 0"></TextBlock>
+                <TextBlock Text="路径" FontFamily="{StaticResource One}" Grid.Row="1" Grid.Column="1" FontSize="20" Name="FilePath"></TextBlock>
+                <TextBlock Text="修改时间" FontFamily="{StaticResource One}" Grid.Row="2" Grid.Column="1" FontSize="20" Name="FileTime" HorizontalAlignment="Left" Margin="0 0 5 0"></TextBlock>
+                <TextBlock Text="" Grid.Row="2" Grid.Column="1" FontSize="18" Name="FileCount" Foreground="#55509C"  Padding="5 5 5 5 " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

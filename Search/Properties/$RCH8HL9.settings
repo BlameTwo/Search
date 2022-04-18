@@ -2,13 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Search.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Defult" Type="System.String" Scope="Application">
+    <Setting Name="Defult" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Tran" Type="System.String" Scope="Application">
+    <Setting Name="Tran" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="LightTran" Type="System.String" Scope="Application">
+    <Setting Name="LightTran" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">3</Value>
     </Setting>
   </Settings>

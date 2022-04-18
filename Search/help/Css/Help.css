@@ -1,0 +1,28 @@
+body{
+    margin: 0px;
+    background: linear-gradient(to bottom, #9796f0, #fbc7d4);
+}
+.code{
+    height: 80px;
+    margin: 0px 400px;
+    border-radius: 10px;
+    background-color: rgba(29, 95, 150, 0.7);
+}
+#father{
+    margin: 0px 300px;
+    border-radius: 10px;
+    background:rgba(255, 255, 255, 0.5);
+}
+span{
+    font-family: "微软雅黑";
+}
+#fath2{
+    margin: 0px 300px;;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+
+}
+#fath2>p{
+    padding-left: 25px;
+}
+

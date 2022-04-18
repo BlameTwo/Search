@@ -15,7 +15,6 @@
                         </AdornerDecorator>
                     </Border>
                     <ControlTemplate.Triggers>
-                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

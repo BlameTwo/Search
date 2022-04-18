@@ -5,30 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Search"
         mc:Ignorable="d"
+        BorderThickness="0"
+        BorderBrush="Transparent"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        Title="MainWindow" Height="70" MaxWidth="800"  MaxHeight="65"
+        Title="MainWindow" Height="65" MaxWidth="800" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+       
         Style="{DynamicResource WindowStyle2}"
-        ResizeMode="NoResize"
-        LostFocus="Window_LostFocus"
-        Loaded="Window_Loaded"      ShowInTaskbar="False"
-        
+        Loaded="Window_Loaded" ShowInTaskbar="False"
         KeyDown="Window_KeyDown">
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Left" >
-        <StackPanel Orientation="Horizontal" Name="Stack" >
-            <svgc:SvgViewbox Name="SVG" Height="30" Margin="10 0 10 0"></svgc:SvgViewbox>
-            <TextBox TextChanged="SearchText1_TextChanged" Name="SearchText1" FontSize="20"   Style="{StaticResource  WarkTextBoxStyle}" Tag="输入关键字"  MouseMove="SearchText1_MouseMove">
-            </TextBox>
-        </StackPanel>
 
-        <hc:NotifyIcon Name="NotifyIcon" Text="搜索框" Visibility="Visible" Icon="Picture\123.ico" Click="NotifyIcon_Click">
-            <hc:NotifyIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="关闭" Click="MenuItem_Click"></MenuItem>
-                    <MenuItem Header="添加启动项"  Name="Menutiem1" Click="Menutiem1_Click"></MenuItem>
-                </ContextMenu>
-            </hc:NotifyIcon.ContextMenu>
-        </hc:NotifyIcon>
+    <Grid Name="Grid1">
+        <Grid.Background >
+            <SolidColorBrush Opacity="0.3" Color="Black"></SolidColorBrush>
+        </Grid.Background>
+        <Grid>
+            <StackPanel Orientation="Vertical"  Name="Stack" Height="30" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                    <svgc:SvgViewbox Name="SVG" Height="30" Margin="10 0 10 0"></svgc:SvgViewbox>
+                    <TextBox Background="Transparent" TextChanged="SearchText1_TextChanged" Name="SearchText1" FontSize="20"   Style="{StaticResource  WarkTextBoxStyle}" Tag="输入关键字"  MouseMove="SearchText1_MouseMove">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        
     </Grid>
 </Window>

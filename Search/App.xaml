@@ -4,10 +4,14 @@
              xmlns:local="clr-namespace:Search"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary >
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style\WindowStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Style\TextBoxStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Style\ContextMenu1.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Style\Button.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Style\ScrollView.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Style\ComBoBox.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

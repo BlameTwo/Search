@@ -16,7 +16,6 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Media.Animation;
 using System.Diagnostics;
-
 namespace Search.Xaml
 {
     /// <summary>
@@ -25,25 +24,28 @@ namespace Search.Xaml
     public partial class FileList : UserControl
     {
         string path;
-        public FileList(string path2)
+        Search.File file = new File();
+        int ListCount2 = 0;
+        string time2;
+        public FileList(string path2,int ListCount,string Time)
         {
             InitializeComponent();
+            ListCount2 = ListCount;
             path = path2;
+            time2 = Time;
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                FilePath.Text = "文件路径" + path;
+                FilePath.Text = "文件路径" + path.TrimStart();
                 FileInfo fileinfo = new FileInfo(path);
-                FileTime.Text = "修改时间:" + fileinfo.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss");
+                FileTime.Text = "修改时间:" + time2.TrimStart();
+                FileCount.Text  =   ListCount2.ToString();
                 ShowIcon();
                 FileName.Text ="文件名：" + System.IO.Path.GetFileName(path);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            catch (Exception){}
         }
 
         void ShowIcon()
@@ -78,7 +80,7 @@ namespace Search.Xaml
             DoubleAnimation dou = new DoubleAnimation();
             Duration duration = new Duration(TimeSpan.FromSeconds(0.2));
             dou.From = this.Opacity; dou.To = 1; dou.Duration = duration;
-            this.BeginAnimation(Window.OpacityProperty, dou);
+            Border1.BeginAnimation(Border.OpacityProperty, dou);
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
@@ -86,19 +88,36 @@ namespace Search.Xaml
             DoubleAnimation dou = new DoubleAnimation();
             Duration duration = new Duration(TimeSpan.FromSeconds(0.2));
             dou.From = this.Opacity; dou.To = 0.5; dou.Duration = duration;
-            this.BeginAnimation(Window.OpacityProperty, dou);
+            Border1.BeginAnimation(Border.OpacityProperty, dou);
         }
 
         private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            try
-            {
-                Process.Start(path);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Process.Start(path);
+        }
+
+        private void MiFullScreen_Click(object sender, RoutedEventArgs e)
+        {
+             Process.Start(path);
+        }
+
+        private void MiPlay_Click(object sender, RoutedEventArgs e)                 /*调用资源管理器，并选定文件*/
+        {
+            string args = string.Format("/e, /select, \"{0}\"", path);
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "explorer";
+            info.Arguments = args;
+            Process.Start(info);
+        }
+
+        private void MyCopyFile_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetDataObject(path);
+        }
+        
+        private void MyOpen_Click(object sender, RoutedEventArgs e)                 //调用系统打开方式
+        {
+            file.OpenFileDIog(path);
         }
     }
 }

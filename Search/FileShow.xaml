@@ -6,14 +6,27 @@
         xmlns:local="clr-namespace:Search"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        ResizeMode="NoResize"
-        Title="FileShow" Height="600" Width="1000">
+        Style="{DynamicResource WindowStyle2}"
+         Height="600" Width="1000" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="1"   Name="Scroll1" ScrollChanged="Scroll1_ScrollChanged">
+        <StackPanel Panel.ZIndex="5" Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Background="White">
+            <Button Width="30" Height="30" Margin="10 0 " Style="{StaticResource commBtn}" Click="Button_Click">
+                <Path Data="M72 462h880v100H72z" Stretch="Uniform" Fill="Black" Width="30" Height="25" />
+            </Button>
+            <Button ToolTip="放大或还原" Click="MaxClick" Focusable="False" Name="Max" Style="{DynamicResource commBtn}"   Height="30" Width="30" Margin="5 0 5 0"   Foreground="red" Background="#D3D3D3">
+                <Path x:Name="MAXPath2" Width="20" Data="M960.7 234.6v554.7H64.3V234.6h896.4m64.3-64.3H0v683.3h1025V170.3z"  Height="25"  Stretch="Uniform"  Fill="Blue" />
+            </Button>
+            <Button Width="30" Height="30" Margin="10 0 " Style="{StaticResource commBtn}" Click="End_Click">
+                <Path Data="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" Height="25" Stretch="Uniform" Width="20" Fill="Red" />
+            </Button>
+        </StackPanel>
+        <TextBlock Name="ReText" FontFamily="微软雅黑" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Text="1"></TextBlock>
+        <ScrollViewer Grid.Row="2"   Name="Scroll1" ScrollChanged="Scroll1_ScrollChanged" Template="{StaticResource MyScrollViewer}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <StackPanel Name="ListPanel"></StackPanel>
             </ScrollViewer>
         <Border CornerRadius="10" Grid.Row="2" Background="White" Height="0" Width="0" Name="Border1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
@@ -22,6 +35,20 @@
             </Border.Effect>
             <TextBlock  Margin="10" Name="TT1"     FontSize="20" FontFamily="微软雅黑"></TextBlock>
         </Border>
-        
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Orientation="Horizontal" Margin="10 0 0 0">
+            <ComboBox  Text="排序条件" SelectionChanged="ComboBox_SelectionChanged" Height="25" Name="Com1" Style="{DynamicResource  stlComboBox}">
+                <ComboBoxItem Content="按名称升序"></ComboBoxItem>
+                <ComboBoxItem Content="按名称降序"></ComboBoxItem>
+                <ComboBoxItem Content="按大小升序"></ComboBoxItem>
+                <ComboBoxItem Content="按大小降序"></ComboBoxItem>
+                <ComboBoxItem Content="按创建时间升序"></ComboBoxItem>
+                <ComboBoxItem Content="按创建时间降序"></ComboBoxItem>
+                <ComboBoxItem Content="按目录地址升序"></ComboBoxItem>
+                <ComboBoxItem Content="按目录地址降序"></ComboBoxItem>
+                <ComboBoxItem Content="按修改时间升序"></ComboBoxItem>
+                <ComboBoxItem Content="按修改时间降序"></ComboBoxItem>
+                <ComboBoxItem Content="按最近修改时间升序"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>
